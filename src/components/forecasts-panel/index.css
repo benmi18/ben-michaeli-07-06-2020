@@ -1,0 +1,49 @@
+.forecasts-panel {
+  width: 60%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 50px 70px;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.city-details {
+  display: flex;
+  align-items: center;
+}
+
+.city-name div:first-child {
+  margin-bottom: 10px;
+}
+
+.city-name {
+  font-size: 18px;
+}
+
+.weather-icon {
+  border: 1px solid black;
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+
+.headline {
+  text-align: center;
+  font-size: 30px;
+}
+
+.weather-forecasts {
+  display: flex;
+  justify-content: space-between;
+}
+
+.MuiCircularProgress-root {
+  align-self: center;
+}
