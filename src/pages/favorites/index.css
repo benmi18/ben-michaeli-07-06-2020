@@ -1,0 +1,19 @@
+.favorites-page {
+  display: flex;
+  padding: 40px 329px 0;
+  flex-wrap: wrap;
+}
+
+.favorite-card {
+  margin: 0 40px 40px 0;
+}
+
+.favorite-card:nth-child(6n) {
+  margin-right: 0;
+}
+
+.favorites-page .loader {
+  width: 100%;
+  text-align: center;
+}
+

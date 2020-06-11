@@ -8,6 +8,10 @@
   justify-content: space-between;
 }
 
+.forecasts-panel .loader {
+  text-align: center;
+}
+
 .top-row {
   display: flex;
   justify-content: space-between;
@@ -33,7 +37,6 @@
   margin-right: 10px;
 }
 
-
 .headline {
   text-align: center;
   font-size: 30px;
@@ -46,4 +49,12 @@
 
 .MuiCircularProgress-root {
   align-self: center;
+}
+
+.favorites .MuiIconButton-root {
+  padding: 0;
+}
+.favorites .favorites-icon {
+  font-size: 45px;
+  color: #E74C3C;
 }

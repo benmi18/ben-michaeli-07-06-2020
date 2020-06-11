@@ -1,0 +1,22 @@
+.weather-card {
+  width: 175px;
+}
+
+.MuiCardContent-root {
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 10px;
+}
+
+.temperature {
+  margin-bottom: 30px;
+}
+
+.weather-text {
+  margin-bottom: 60px;
+}

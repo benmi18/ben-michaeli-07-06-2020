@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Material
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { TextField } from '@material-ui/core';
 
-const SearchInput = ({ options, defaultOption, label, cssClass, search, inputChanged }) => (
+const SearchInput = ({ options, value, label, cssClass, onSearch, onInputChanged  }) => (
   <Autocomplete
     freeSolo
     clearOnEscape={true}
     className={cssClass}
     options={options}
-    defaultValue={defaultOption}
-    onKeyPress={(e) => search(e)}
-    onChange={(e, value) => inputChanged(value)}
+    value={value}
+    onKeyPress={(e) => onSearch(e)}
+    onChange={(e, value) => onInputChanged(value)}
     renderInput={(params) => (
       <TextField {...params} label={label} margin="normal" variant="outlined" />
     )}

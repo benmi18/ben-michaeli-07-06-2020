@@ -1,25 +1,41 @@
 import React, { useEffect, useState, Fragment } from 'react';
 // Material
-import { Card, CircularProgress } from '@material-ui/core';
+import { Card, IconButton } from '@material-ui/core';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 // Style
 import './index.css';
 // Store
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch, useStore } from 'react-redux';
+import { toggleFavoriteAction } from '../../store/actions';
 // Components
 import WeatherCard from '../weather-card';
+import Loader from '../loader';
 // Services
 import * as moment from 'moment';
 import * as weatherService from "../../services/weather-service/weatherService";
 import { temperatureConverter } from '../../helpers';
 
 const ForecastsPanel = () => {
-  const selectedCity = useSelector(state => state.selectedCity);
-  const { selectedUnit } = useSelector(store => store.tempUnit);
+  // State
   const [forecasts, setForecasts] = useState({});
   const [loading, setLoading] = useState(true);
+  const [isInFavorites, setIsInFavorites] = useState(false);
+  
+  // From store
+  const store = useStore();
+  const dispatch = useDispatch();
+  const selectedCity = useSelector(store => store.selectedCity);
+  const { selectedUnit } = useSelector(store => store.tempUnit);
+
+  useEffect(() => {
+    isSelectedInFavorites();    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCity])
 
   useEffect(() => {
     fetchCurrentConditions();
+    isSelectedInFavorites();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -39,10 +55,19 @@ const ForecastsPanel = () => {
     setLoading(false);
   }
 
+  const toggleFavorites = () => {
+    dispatch(toggleFavoriteAction(selectedCity));
+    isSelectedInFavorites();
+  }
+
+  const isSelectedInFavorites = () => {
+    setIsInFavorites(!!store.getState().favorites.find(city => city.Key === selectedCity.Key));
+  }
+
   return (
     <Card className="forecasts-panel" variant="outlined">
       {loading ?
-        <CircularProgress disableShrink /> :
+        <Loader /> :
         <Fragment>
           <div className="top-row">
             <div className="city-details">
@@ -56,7 +81,14 @@ const ForecastsPanel = () => {
                 </div>
               </div>
             </div>
-            <div className="favorites">{forecasts.headline}</div>
+            <div className="favorites">
+              <IconButton onClick={toggleFavorites}>
+                {isInFavorites ?
+                  <FavoriteIcon className="favorites-icon" /> :
+                  <FavoriteBorderIcon className="favorites-icon" />
+                }
+              </IconButton>
+            </div>
           </div>
           <div className="headline">{forecasts.headline}</div>
           <div className="weather-forecasts">
