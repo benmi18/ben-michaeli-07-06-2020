@@ -1,3 +1,7 @@
+.navbar,
+.title {
+  flex-grow: 1;
+}
 .mobile-menu {
   display: none;
 }

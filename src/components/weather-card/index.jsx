@@ -3,14 +3,15 @@ import { useSelector } from 'react-redux';
 // Material
 import { Card, CardContent } from '@material-ui/core';
 // Services
-import {temperatureConverter} from '../../helpers';
+import { temperatureConverter } from '../../helpers';
 // Style
 import './index.css';
 import WeatherIcon from '../weather-icon';
+import Temperature from '../temperature';
 
 const WeatherCard = ({ label, temperature, weatherText, currentTempUnit, className, icon }) => {
-  const {selectedUnit} = useSelector(store => store.tempUnit);
-  
+  const { selectedUnit } = useSelector(store => store.tempUnit);
+
   return (
     <Card className={`weather-card ${className}`} variant="outlined">
       <CardContent className="card-content">
@@ -18,9 +19,11 @@ const WeatherCard = ({ label, temperature, weatherText, currentTempUnit, classNa
           {label}
         </div>
         <div className="temperature">
-          {temperatureConverter(temperature, selectedUnit, currentTempUnit)}
-          <span> &#176;</span>
-          <span>{selectedUnit}</span>
+          <Temperature
+            currentDayTemperature={temperature}
+            selectedUnit={selectedUnit}
+            currentTemperatureUnit={currentTempUnit}
+          />
         </div>
         {weatherText &&
           <div className="weather-text">

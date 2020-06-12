@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Fragment } from 'react';
 // Material
-import { Card, IconButton, Avatar } from '@material-ui/core';
+import { Card, IconButton } from '@material-ui/core';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 // Style
@@ -16,6 +16,7 @@ import Loader from '../loader';
 import * as moment from 'moment';
 import * as weatherService from "../../services/weather-service/weatherService";
 import { temperatureConverter } from '../../helpers';
+import Temperature from '../temperature';
 
 const ForecastsPanel = () => {
   // State
@@ -30,33 +31,33 @@ const ForecastsPanel = () => {
   const favorites = useSelector(state => state.favorites)
 
   useEffect(() => {
-    isSelectedInFavorites();
-    fetchCurrentConditions();
+    isSelectedCityInFavorites();
+    fetchCurrentCityConditions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCity, favorites]);
 
-  const fetchCurrentConditions = async () => {
+  const fetchCurrentCityConditions = async () => {
     // TODO: remove mock
     // const res = await weatherService.forecasts(selectedCity.Key);
     const res = mockForecasts;
-    const thisDayForecasts = res.data.DailyForecasts.find(x => moment().isSame(x.Date, 'day'));
+    const todayForecast = res.data.DailyForecasts.find(x => moment().isSame(x.Date, 'day'));
     setForecasts({
       originData: res.data,
       dailyForecasts: res.data.DailyForecasts,
       headline: res.data.Headline.Text,
-      currentTemperatureUnit: thisDayForecasts.Temperature.Minimum.Unit,
-      currentDayTemperature: thisDayForecasts.Temperature.Minimum.Value,
-      icon: thisDayForecasts.Day.Icon
+      currentTemperatureUnit: todayForecast.Temperature.Minimum.Unit,
+      currentDayTemperature: todayForecast.Temperature.Minimum.Value,
+      icon: todayForecast.Day.Icon
     });
     setLoading(false);
   }
 
   const toggleFavorites = () => {
     dispatch(toggleFavoriteAction(selectedCity));
-    isSelectedInFavorites();
+    isSelectedCityInFavorites();
   }
 
-  const isSelectedInFavorites = () => {
+  const isSelectedCityInFavorites = () => {
     setIsInFavorites(!!favorites.find(city => city.Key === selectedCity.Key));
   }
 
@@ -70,11 +71,11 @@ const ForecastsPanel = () => {
               <WeatherIcon className="weather-icon" icon={forecasts.icon} />
               <div className="city-name">
                 <div>{selectedCity.LocalizedName}</div>
-                <div>
-                  {temperatureConverter(forecasts.currentDayTemperature, selectedUnit, forecasts.currentTemperatureUnit)}
-                  <span> &#176;</span>
-                  <span>{selectedUnit}</span>
-                </div>
+                <Temperature
+                  currentDayTemperature={forecasts.currentDayTemperature}
+                  selectedUnit={selectedUnit}
+                  currentTemperatureUnit={forecasts.currentTemperatureUnit}
+                />
               </div>
             </div>
             <div className="favorites">
@@ -105,7 +106,6 @@ const ForecastsPanel = () => {
 }
 
 export default ForecastsPanel;
-
 
 const mockForecasts = {
   data: {

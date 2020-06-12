@@ -23,11 +23,11 @@ const TemperatureUnitToggle = () => {
       >
         <ToggleButton value="F">
           F
-      </ToggleButton>
+        </ToggleButton>
 
         <ToggleButton value="C">
           C
-      </ToggleButton>
+        </ToggleButton>
       </ToggleButtonGroup>
     </div>
   );
