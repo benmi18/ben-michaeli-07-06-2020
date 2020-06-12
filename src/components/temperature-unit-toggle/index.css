@@ -1,4 +1,4 @@
-.temp-unit-container {
+.temperature-unit-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,23 +7,26 @@
   height: 50px;
   font-size: 14px;
 }
-
-.temp-unit-container label {
-
-}
-
 .MuiToggleButtonGroup-root {
   margin-right: 10px;
   height: 25px;
   border: none;
 }
-
 .MuiToggleButtonGroup-root .MuiToggleButton-root {
   color: #fff;
   border: 1px solid;
 }
-
 .MuiToggleButtonGroup-root .MuiToggleButton-root.Mui-selected {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.30);
+}
+
+@media screen and (max-width: 1024px) {
+  .temperature-unit-container {
+    margin-right: 0;
+  }
+  .temperature-unit-container .label {
+    display: none;
+  }
+
 }

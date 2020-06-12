@@ -1,0 +1,36 @@
+.mobile-menu {
+  display: none;
+}
+.reset-link-style {
+  color: inherit;
+  text-decoration: inherit;
+}
+.navigation-links {
+  border: 1px solid;
+  border-radius: 3px;
+}
+.MuiButtonBase-root.theme-switch {
+  margin-left: 5px;
+  color: inherit;
+}
+.MuiButtonBase-root.hamburger-btn {
+  color: #fff;
+}
+.mobile-menu .dropdown-menu {
+  z-index: 99;
+  width: 200px;
+}
+.dropdown-menu .MuiPaper-root {
+  border-radius: 0;
+}
+@media screen and (max-width: 1024px) {
+  .mobile-menu {
+    display: block;
+  }
+  .navigation-links {
+    display: none;
+  }
+  .app-bar .toolbar.MuiToolbar-gutters {
+    padding-left: 0;
+  }  
+}

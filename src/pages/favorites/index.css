@@ -1,19 +1,53 @@
 .favorites-page {
   display: flex;
-  padding: 40px 329px 0;
-  flex-wrap: wrap;
+  justify-content: center;
 }
-
+.favorites-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  padding: 50px 0;
+}
 .favorite-card {
   margin: 0 40px 40px 0;
 }
-
 .favorite-card:nth-child(6n) {
-  margin-right: 0;
+  /* margin-right: 0; */
 }
-
 .favorites-page .loader {
   width: 100%;
   text-align: center;
 }
 
+@media screen and (max-width: 1680px) {
+  .favorites-container {
+    width: 73%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .favorites-container {
+    width: 90%;
+  }
+  .favorite-card {
+    width: 180px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .favorites-container {
+    padding: 50px;
+    justify-content: center;
+    width: 100%;
+  }
+  .favorite-card {
+    margin: 0 0 40px;
+    width: 240px;
+    height: 260px;
+  }
+
+  .favorite-card .card-content .label,
+  .favorite-card .card-content .temperature {
+    margin-bottom: 20px;
+  }
+}

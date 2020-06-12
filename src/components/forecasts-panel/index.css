@@ -58,3 +58,57 @@
   font-size: 45px;
   color: #E74C3C;
 }
+
+@media screen and (max-width: 1440px) {
+  .forecasts-panel {
+    width: 70%;
+  }
+
+  .headline {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .forecasts-panel {
+    width: 85%;
+  }
+
+  .headline {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .forecasts-panel {
+    height: 55vh;
+    width: 98%;
+    padding: 50px 40px 70px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .MuiPaper-outlined.forecasts-panel {
+    border: 0;
+    height: unset;
+  }
+  .city-details {
+    margin-right: 60px;
+  }
+  .top-row {
+    justify-content: center;
+  }
+  .top-row, .headline {
+    margin-bottom: 60px;
+  } 
+  .headline {
+    font-size: 26px;
+  }
+  .city-name {
+    font-size: 20px;
+  } 
+  .weather-forecasts {
+    flex-direction: column;
+    align-items: center;
+  }
+}

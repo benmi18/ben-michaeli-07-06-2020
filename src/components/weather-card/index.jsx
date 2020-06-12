@@ -10,7 +10,7 @@ const WeatherCard = ({ label, temperature, weatherText, currentTempUnit, classNa
   
   return (
     <Card className={`weather-card ${className}`} variant="outlined">
-      <CardContent>
+      <CardContent className="card-content">
         <div className="label">
           {label}
         </div>

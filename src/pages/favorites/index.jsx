@@ -34,19 +34,21 @@ const Favorites = () => {
 
   return (
     <div className="favorites-page">
-      {loading ?
-        <Loader /> :
-        favorites.map((favoriteCity, i) => (
-          <WeatherCard
-            className="favorite-card"
-            key={i}
-            label={favoriteCity.LocalizedName}
-            currentTempUnit={favoriteCity.Temperature.Imperial.Unit}
-            temperature={favoriteCity.Temperature.Imperial.Value}
-            weatherText={favoriteCity.WeatherText}
-          />
-        ))
-      }
+      <div className="favorites-container">
+        {loading ?
+          <Loader /> :
+          favorites.map((favoriteCity, i) => (
+            <WeatherCard
+              className="favorite-card"
+              key={i}
+              label={favoriteCity.LocalizedName}
+              currentTempUnit={favoriteCity.Temperature.Imperial.Unit}
+              temperature={favoriteCity.Temperature.Imperial.Value}
+              weatherText={favoriteCity.WeatherText}
+            />
+          ))
+        }
+      </div>
     </div>
   )
 }

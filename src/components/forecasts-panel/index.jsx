@@ -6,7 +6,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 // Style
 import './index.css';
 // Store
-import { useSelector, useDispatch, useStore } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { toggleFavoriteAction } from '../../store/actions';
 // Components
 import WeatherCard from '../weather-card';
@@ -23,21 +23,21 @@ const ForecastsPanel = () => {
   const [isInFavorites, setIsInFavorites] = useState(false);
   
   // From store
-  const store = useStore();
   const dispatch = useDispatch();
   const selectedCity = useSelector(store => store.selectedCity);
   const { selectedUnit } = useSelector(store => store.tempUnit);
+  const favorites = useSelector(state => state.favorites)
 
   useEffect(() => {
     isSelectedInFavorites();    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCity])
-
-  useEffect(() => {
     fetchCurrentConditions();
-    isSelectedInFavorites();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCity, favorites])
+
+  // useEffect(() => {
+  //   // isSelectedInFavorites();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const fetchCurrentConditions = async () => {
     // TODO: remove mock
@@ -61,7 +61,7 @@ const ForecastsPanel = () => {
   }
 
   const isSelectedInFavorites = () => {
-    setIsInFavorites(!!store.getState().favorites.find(city => city.Key === selectedCity.Key));
+    setIsInFavorites(!!favorites.find(city => city.Key === selectedCity.Key));
   }
 
   return (

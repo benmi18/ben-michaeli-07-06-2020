@@ -14,8 +14,8 @@ const TemperatureUnitToggle = () => {
   }
 
   return (
-    <div className="temp-unit-container">
-      <label>Temperature Unit</label>
+    <div className="temperature-unit-container">
+      <label className="label">Temperature Unit</label>
       <ToggleButtonGroup
         value={selectedUnit}
         exclusive
