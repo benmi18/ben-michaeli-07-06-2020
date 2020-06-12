@@ -19,6 +19,9 @@
 .favorite-card {
   margin: 0 40px 40px 0;
 }
+.favorite-card:hover {
+  cursor: pointer;
+}
 .favorites-page .loader {
   width: 100%;
   text-align: center;

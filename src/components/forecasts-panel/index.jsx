@@ -40,7 +40,7 @@ const ForecastsPanel = () => {
     // TODO: remove mock
     // const res = await weatherService.forecasts(selectedCity.Key);
     const res = mockForecasts;
-    const todayForecast = res.data.DailyForecasts.find(x => moment().isSame(x.Date, 'day'));
+    const todayForecast = res.data.DailyForecasts[0];
     setForecasts({
       originData: res.data,
       dailyForecasts: res.data.DailyForecasts,
@@ -53,7 +53,10 @@ const ForecastsPanel = () => {
   }
 
   const toggleFavorites = () => {
-    dispatch(toggleFavoriteAction(selectedCity));
+    dispatch(toggleFavoriteAction({
+      Key: selectedCity.Key,
+      LocalizedName: selectedCity.LocalizedName
+    }));
     isSelectedCityInFavorites();
   }
 
