@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Fragment } from 'react';
 // Material
-import { Card, IconButton } from '@material-ui/core';
+import { Card, IconButton, Avatar } from '@material-ui/core';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 // Style
@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleFavoriteAction } from '../../store/actions';
 // Components
 import WeatherCard from '../weather-card';
+import WeatherIcon from "../weather-icon";
 import Loader from '../loader';
 // Services
 import * as moment from 'moment';
@@ -21,7 +22,7 @@ const ForecastsPanel = () => {
   const [forecasts, setForecasts] = useState({});
   const [loading, setLoading] = useState(true);
   const [isInFavorites, setIsInFavorites] = useState(false);
-  
+
   // From store
   const dispatch = useDispatch();
   const selectedCity = useSelector(store => store.selectedCity);
@@ -29,28 +30,23 @@ const ForecastsPanel = () => {
   const favorites = useSelector(state => state.favorites)
 
   useEffect(() => {
-    isSelectedInFavorites();    
+    isSelectedInFavorites();
     fetchCurrentConditions();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCity, favorites])
-
-  // useEffect(() => {
-  //   // isSelectedInFavorites();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCity, favorites]);
 
   const fetchCurrentConditions = async () => {
     // TODO: remove mock
     // const res = await weatherService.forecasts(selectedCity.Key);
     const res = mockForecasts;
-
     const thisDayForecasts = res.data.DailyForecasts.find(x => moment().isSame(x.Date, 'day'));
     setForecasts({
       originData: res.data,
       dailyForecasts: res.data.DailyForecasts,
       headline: res.data.Headline.Text,
       currentTemperatureUnit: thisDayForecasts.Temperature.Minimum.Unit,
-      currentDayTemperature: thisDayForecasts.Temperature.Minimum.Value
+      currentDayTemperature: thisDayForecasts.Temperature.Minimum.Value,
+      icon: thisDayForecasts.Day.Icon
     });
     setLoading(false);
   }
@@ -71,7 +67,7 @@ const ForecastsPanel = () => {
         <Fragment>
           <div className="top-row">
             <div className="city-details">
-              <div className="weather-icon">icon</div>
+              <WeatherIcon className="weather-icon" icon={forecasts.icon} />
               <div className="city-name">
                 <div>{selectedCity.LocalizedName}</div>
                 <div>
@@ -98,6 +94,7 @@ const ForecastsPanel = () => {
                 label={moment(day.Date).format('dddd')}
                 currentTempUnit={day.Temperature.Minimum.Unit}
                 temperature={day.Temperature.Minimum.Value}
+                icon={day.Day.Icon}
               />
             ))}
           </div>

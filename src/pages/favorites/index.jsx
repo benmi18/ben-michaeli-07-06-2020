@@ -8,6 +8,7 @@ import { CircularProgress } from '@material-ui/core';
 // Style
 import './index.css';
 import Loader from '../../components/loader';
+import EmptyMessage from '../../components/empty-message';
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState(useSelector(state => state.favorites));
@@ -35,18 +36,23 @@ const Favorites = () => {
   return (
     <div className="favorites-page">
       <div className="favorites-container">
-        {loading ?
-          <Loader /> :
-          favorites.map((favoriteCity, i) => (
-            <WeatherCard
-              className="favorite-card"
-              key={i}
-              label={favoriteCity.LocalizedName}
-              currentTempUnit={favoriteCity.Temperature.Imperial.Unit}
-              temperature={favoriteCity.Temperature.Imperial.Value}
-              weatherText={favoriteCity.WeatherText}
-            />
-          ))
+        {!favorites.length ?
+          <div className="empty-message">
+            <EmptyMessage text="Favorites List Is Empty" />
+          </div> :
+          loading ?
+            <Loader /> :
+            favorites.map((favoriteCity, i) => (
+              <WeatherCard
+                className="favorite-card"
+                key={i}
+                label={favoriteCity.LocalizedName}
+                currentTempUnit={favoriteCity.Temperature.Imperial.Unit}
+                temperature={favoriteCity.Temperature.Imperial.Value}
+                weatherText={favoriteCity.WeatherText}
+                icon={favoriteCity.WeatherIcon}
+              />
+            ))
         }
       </div>
     </div>

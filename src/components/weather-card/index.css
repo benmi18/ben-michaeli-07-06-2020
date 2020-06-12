@@ -1,45 +1,37 @@
 .weather-card {
   width: 175px;
 }
-
 .MuiCardContent-root {
   display: flex;
   font-size: 18px;
   align-items: center;
   flex-direction: column;
 }
-
-.label {
+.MuiCardContent-root .label {
   margin-bottom: 10px;
 }
-
 .temperature {
   margin-bottom: 30px;
 }
-
 .weather-text {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
-
 
 @media screen and (max-width: 1680px) {
   .weather-card {
     width: 160px;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .weather-card {
     width: 135px;
   }
 }
-
 @media screen and (max-width: 800px) {
   .weather-card {
     width: 125px;
   }
 }
-
 @media screen and (max-width: 600px) {
   .weather-card {
     width: 250px;

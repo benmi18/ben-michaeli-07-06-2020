@@ -28,7 +28,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
 
-  const ToggleHamburgerMenu = () => setOpen(prevOpen => !prevOpen);
+  const toggleHamburgerMenu = () => setOpen(prevOpen => !prevOpen);
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) return;
     setOpen(false);
@@ -51,16 +51,15 @@ const Navbar = () => {
         <Toolbar className="toolbar">
           {/* Mobile menu */}
           <div className="mobile-menu">
-            <Button
+            <IconButton
+              className="hamburger-btn"
               ref={anchorRef}
               aria-controls={open ? 'menu-list-grow' : undefined}
               aria-haspopup="true"
-              onClick={ToggleHamburgerMenu}
+              onClick={toggleHamburgerMenu}
             >
-              <IconButton className="hamburger-btn">
-                {!open ? <MenuIcon /> : <MenuOpenIcon />}
-              </IconButton>
-            </Button>
+              {!open ? <MenuIcon /> : <MenuOpenIcon />}
+            </IconButton>
             <Popper className="dropdown-menu" open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
               {({ TransitionProps, placement }) => (
                 <Grow

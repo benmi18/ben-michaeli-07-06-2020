@@ -1,11 +1,14 @@
 import React from 'react';
-import { Card, CardContent, makeStyles } from '@material-ui/core';
-import {temperatureConverter} from '../../helpers';
 import { useSelector } from 'react-redux';
+// Material
+import { Card, CardContent } from '@material-ui/core';
+// Services
+import {temperatureConverter} from '../../helpers';
 // Style
 import './index.css';
+import WeatherIcon from '../weather-icon';
 
-const WeatherCard = ({ label, temperature, weatherText, currentTempUnit, className }) => {
+const WeatherCard = ({ label, temperature, weatherText, currentTempUnit, className, icon }) => {
   const {selectedUnit} = useSelector(store => store.tempUnit);
   
   return (
@@ -24,6 +27,7 @@ const WeatherCard = ({ label, temperature, weatherText, currentTempUnit, classNa
             {weatherText}
           </div>
         }
+        {icon && <WeatherIcon className="weather-icon" icon={icon} />}
       </CardContent>
     </Card>
   );

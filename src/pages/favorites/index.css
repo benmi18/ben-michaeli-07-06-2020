@@ -8,11 +8,16 @@
   width: 70%;
   padding: 50px 0;
 }
+.favorites-container .empty-message {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.favorites-container .MuiAlert-root {
+  padding: 6px 40px;
+}
 .favorite-card {
   margin: 0 40px 40px 0;
-}
-.favorite-card:nth-child(6n) {
-  /* margin-right: 0; */
 }
 .favorites-page .loader {
   width: 100%;

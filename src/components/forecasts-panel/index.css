@@ -7,50 +7,37 @@
   box-sizing: border-box;
   justify-content: space-between;
 }
-
 .forecasts-panel .loader {
   text-align: center;
 }
-
 .top-row {
   display: flex;
   justify-content: space-between;
 }
-
 .city-details {
   display: flex;
   align-items: center;
 }
-
 .city-name div:first-child {
   margin-bottom: 10px;
 }
-
 .city-name {
   font-size: 18px;
 }
-
 .weather-icon {
-  border: 1px solid black;
-  width: 80px;
-  height: 80px;
-  margin-right: 10px;
+  width: 100px;
 }
-
 .headline {
   text-align: center;
   font-size: 30px;
 }
-
 .weather-forecasts {
   display: flex;
   justify-content: space-between;
 }
-
 .MuiCircularProgress-root {
   align-self: center;
 }
-
 .favorites .MuiIconButton-root {
   padding: 0;
 }
@@ -68,17 +55,14 @@
     font-size: 25px;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .forecasts-panel {
     width: 85%;
   }
-
   .headline {
     font-size: 20px;
   }
 }
-
 @media screen and (max-width: 800px) {
   .forecasts-panel {
     height: 55vh;
@@ -86,7 +70,6 @@
     padding: 50px 40px 70px;
   }
 }
-
 @media screen and (max-width: 600px) {
   .MuiPaper-outlined.forecasts-panel {
     border: 0;
