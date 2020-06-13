@@ -6,8 +6,11 @@
 .search-input {
   width: 25%;
 }
+.home-page .MuiSnackbar-root {
+  top: 140px
+}
 .home-page .MuiAlert-root {
-  margin-bottom: 10px;
+  background-color: #fff;
 }
 
 @media screen and (max-width: 1024px) {

@@ -70,7 +70,7 @@ const Home = () => {
         onSearch={handleSearch}
         onInputChanged={handleInputChange}
       />
-      {error && <Message type="error" text={error} />}
+      {error && <Message className="error-message" autoHideDuration={2500} type="error" text={error} />}
       <ForecastsPanel />
     </div>
   )
