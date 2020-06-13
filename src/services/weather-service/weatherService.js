@@ -7,13 +7,16 @@ const FORECASTS_URL = 'forecasts/v1/daily/5day';
 const API_KEY = 'apikey=F65ITMcva7VLGjfdqpDi1gJOQwOMOiXX';
 
 export const autocomplete = query => {
-  return axios.get(`${BASE_URL}/${LOCATION_URL}/autocomplete?${API_KEY}&q=${query}`);
+  return axios.get(`${BASE_URL}/${LOCATION_URL}/autocomplete?${API_KEY}&q=${query}`)
+    .catch(error => error);
 }
 
 export const currentConditions = locationKey => {
-  return axios.get(`${BASE_URL}/${CURRENT_CONDITION_URL}/${locationKey}?${API_KEY}`);
+  return axios.get(`${BASE_URL}/${CURRENT_CONDITION_URL}/${locationKey}?${API_KEY}`)
+    .catch(error => error);
 }
 
 export const forecasts = locationKey => {
-  return axios.get(`${BASE_URL}/${FORECASTS_URL}/${locationKey}?${API_KEY}`);
+  return axios.get(`${BASE_URL}/${FORECASTS_URL}/${locationKey}?${API_KEY}`)
+    .catch(error => error);
 }

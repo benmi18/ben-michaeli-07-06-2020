@@ -6,6 +6,6 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const EmptyMessage = ({text}) => (<Alert severity="info">{text}</Alert>);
+const Message = ({text, type}) => (<Alert variant="outlined" severity={type}>{text}</Alert>);
 
-export default EmptyMessage
+export default Message

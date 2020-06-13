@@ -1,4 +1,9 @@
-const initialState = []
+const initialState = [
+  {
+    Key: "215854",
+    LocalizedName: "Tel Aviv"
+  }
+]
 
 const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {

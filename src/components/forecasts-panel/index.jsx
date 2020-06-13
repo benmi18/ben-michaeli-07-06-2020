@@ -17,12 +17,14 @@ import * as moment from 'moment';
 import * as weatherService from "../../services/weather-service/weatherService";
 import { temperatureConverter } from '../../helpers';
 import Temperature from '../temperature';
+import Message from '../message';
 
 const ForecastsPanel = () => {
   // State
   const [forecasts, setForecasts] = useState({});
   const [loading, setLoading] = useState(true);
   const [isInFavorites, setIsInFavorites] = useState(false);
+  const [error, setError] = useState(false);
 
   // From store
   const dispatch = useDispatch();
@@ -38,17 +40,22 @@ const ForecastsPanel = () => {
 
   const fetchCurrentCityConditions = async () => {
     // TODO: remove mock
-    // const res = await weatherService.forecasts(selectedCity.Key);
-    const res = mockForecasts;
-    const todayForecast = res.data.DailyForecasts[0];
-    setForecasts({
-      originData: res.data,
-      dailyForecasts: res.data.DailyForecasts,
-      headline: res.data.Headline.Text,
-      currentTemperatureUnit: todayForecast.Temperature.Minimum.Unit,
-      currentDayTemperature: todayForecast.Temperature.Minimum.Value,
-      icon: todayForecast.Day.Icon
-    });
+    const res = await weatherService.forecasts(selectedCity.Key);
+    // const res = await weatherService.forecasts('2342233');
+    // const res = mockForecasts;
+    if (res.name && res.name === 'Error') {
+      setError(res.message);
+    } else {
+      const todayForecast = res.data.DailyForecasts[0];
+      setForecasts({
+        originData: res.data,
+        dailyForecasts: res.data.DailyForecasts,
+        headline: res.data.Headline.Text,
+        currentTemperatureUnit: todayForecast.Temperature.Minimum.Unit,
+        currentDayTemperature: todayForecast.Temperature.Minimum.Value,
+        icon: todayForecast.Day.Icon
+      });
+    }
     setLoading(false);
   }
 
@@ -66,7 +73,9 @@ const ForecastsPanel = () => {
 
   return (
     <Card className="forecasts-panel" variant="outlined">
-      {loading ?
+      {error ?
+        <Message type="error" text={error} /> : 
+      loading ?
         <Loader /> :
         <Fragment>
           <div className="top-row">

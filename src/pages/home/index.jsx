@@ -10,11 +10,13 @@ import * as weatherService from "../../services/weather-service/weatherService";
 import SearchInput from '../../components/search-Input';
 import ForecastsPanel from '../../components/forecasts-panel';
 import { autoCompleteMock } from '../../mockFile';
+import Message from '../../components/message';
 
 const Home = () => {
   const dispatch = useDispatch();
   const [autoCompleteOptions, setAutoCompleteOptions] = useState([]);
   const selectedCity = useSelector(state => state.selectedCity);
+  const [error, setError] = useState(false);
 
   const handleSearch = async event => {
     const enterKey = 'Enter';
@@ -23,8 +25,12 @@ const Home = () => {
       const inputValue = event.target.value;
       const query = `${inputValue}${pressedKey}`;
       // TODO: remove mock
-      // const res = await weatherService.autocomplete(query);
-      const res = autoCompleteMock;
+      const res = await weatherService.autocomplete(query);
+      // const res = autoCompleteMock;
+      if (res.name && res.name === 'Error') {
+        setError(res.message);
+        return;
+      }
       setAutoCompleteOptions(res.data);
     }
   }
@@ -44,6 +50,7 @@ const Home = () => {
         onSearch={handleSearch}
         onInputChanged={handleInputChange}
       />
+      {error && <Message type="error" text={error} />}
       <ForecastsPanel />
     </div>
   )

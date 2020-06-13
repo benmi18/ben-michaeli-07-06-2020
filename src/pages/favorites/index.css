@@ -8,7 +8,7 @@
   width: 70%;
   padding: 50px 0;
 }
-.favorites-container .empty-message {
+.favorites-container .message {
   width: 100%;
   display: flex;
   justify-content: center;
