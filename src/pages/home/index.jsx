@@ -9,7 +9,6 @@ import * as weatherService from "../../services/weather-service/weatherService";
 // Components
 import SearchInput from '../../components/search-Input';
 import ForecastsPanel from '../../components/forecasts-panel';
-import { autoCompleteMock } from '../../mockFile';
 import Message from '../../components/message';
 
 const Home = () => {
@@ -24,9 +23,7 @@ const Home = () => {
       const pressedKey = event.key;
       const inputValue = event.target.value;
       const query = `${inputValue}${pressedKey}`;
-      // TODO: remove mock
       const res = await weatherService.autocomplete(query);
-      // const res = autoCompleteMock;
       if (res.name && res.name === 'Error') {
         setError(res.message);
         return;

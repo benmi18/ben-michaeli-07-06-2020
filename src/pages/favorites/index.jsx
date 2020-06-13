@@ -24,7 +24,6 @@ const Favorites = () => {
   }, []);
 
   const fetchConditions = () => {
-    // TODO: uncomment
     favorites.length ?
       Promise.all(favorites.map(async favorite => {
         const res = await weatherService.currentConditions(favorite.Key);

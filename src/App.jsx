@@ -33,7 +33,7 @@ function App() {
           <Router>
             <Navbar />
             <Switch>
-              <Route exact path="/">
+              <Route exact path="/ben-michaeli-07-06-2020">
                 <Home />
               </Route>
               <Route exact path="/favorites">
