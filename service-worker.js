@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ben-michaeli-07-06-2020/precache-manifest.94b902a53c3838d2b18e51a72ffca197.js"
+  "/ben-michaeli-07-06-2020/precache-manifest.744b826e818425bd8bf24ee40e609fdd.js"
 );
 
 self.addEventListener('message', (event) => {
