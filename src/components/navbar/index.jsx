@@ -21,7 +21,7 @@ const Navbar = () => (
         </Typography>
         <TemperatureUnitToggle />
         <div className="navigation-links">
-          <NavLink className="reset-link-style" to="/">
+          <NavLink className="reset-link-style" to="/ben-michaeli-07-06-2020">
             <Button color="inherit">Home</Button>
           </NavLink>
           <NavLink className="reset-link-style" to="/favorites">
