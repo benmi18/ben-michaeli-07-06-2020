@@ -36,7 +36,7 @@ const Home = () => {
   }
 
   const errorGeolocation = async (error) => {
-    setError(geolocationBlockedError);
+    setError({isError: true, message: geolocationBlockedError});
   }
 
   const handleSearch = async event => {

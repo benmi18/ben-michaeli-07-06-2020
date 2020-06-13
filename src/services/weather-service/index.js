@@ -8,21 +8,21 @@ const API_KEY = 'apikey=F65ITMcva7VLGjfdqpDi1gJOQwOMOiXX';
 const API_KEY2 = 'apikey=6EOxAJZQpzrQ7BdioNyhX8XyFS0MxOok'
 
 export const autocomplete = query => {
-  return axios.get(`${BASE_URL}/${LOCATION_URL}/autocomplete?${API_KEY}&q=${query}`)
+  return axios.get(`${BASE_URL}/${LOCATION_URL}/autocomplete?${API_KEY2}&q=${query}`)
     .catch(error => error);
 }
 
 export const currentConditions = locationKey => {
-  return axios.get(`${BASE_URL}/${CURRENT_CONDITION_URL}/${locationKey}?${API_KEY}`)
+  return axios.get(`${BASE_URL}/${CURRENT_CONDITION_URL}/${locationKey}?${API_KEY2}`)
     .catch(error => error);
 }
 
 export const forecasts = locationKey => {
-  return axios.get(`${BASE_URL}/${FORECASTS_URL}/${locationKey}?${API_KEY}`)
+  return axios.get(`${BASE_URL}/${FORECASTS_URL}/${locationKey}?${API_KEY2}`)
     .catch(error => error);
 }
 
 export const geolocation = (lat, lon) => {
-  return axios.get(`${BASE_URL}/${LOCATION_URL}/geoposition/search?${API_KEY}&q=${lat},${lon}`)
+  return axios.get(`${BASE_URL}/${LOCATION_URL}/geoposition/search?${API_KEY2}&q=${lat},${lon}`)
     .catch(error => error);
 }
