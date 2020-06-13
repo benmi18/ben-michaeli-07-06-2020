@@ -41,7 +41,7 @@ const MobileMenu = () => {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                  <NavLink className="reset-link-style" to="/">
+                  <NavLink className="reset-link-style" to="/ben-michaeli-07-06-2020">
                     <MenuItem onClick={handleClose}>
                       Home
                           </MenuItem>

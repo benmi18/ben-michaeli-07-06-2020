@@ -7,9 +7,11 @@ import WeatherCard from "../../components/weather-card";
 import Message from '../../components/message';
 import Loader from '../../components/loader';
 // Services
-import * as weatherService from '../../services/weather-service/weatherService'
+import * as weatherService from '../../services/weather-service'
 // Style
 import './index.css';
+// Services
+import { currentConditionsError } from '../../helpers';
 
 const Favorites = () => {
   const history = useHistory();
@@ -28,7 +30,7 @@ const Favorites = () => {
       Promise.all(favorites.map(async favorite => {
         const res = await weatherService.currentConditions(favorite.Key);
         if (res.name && res.name === 'Error') {
-          setError(res.message);
+          setError(currentConditionsError);
           return;
         }
         return {
@@ -44,8 +46,8 @@ const Favorites = () => {
   }
 
   const handleFavoriteClick = selectedCityObject => {
-    dispatch(setSelectedCityAction(selectedCityObject));
-    history.push("/");
+    dispatch(setSelectedCityAction({...selectedCityObject, redirectFromFavorite: true}));
+    history.push("/ben-michaeli-07-06-2020");
   }
 
   return (

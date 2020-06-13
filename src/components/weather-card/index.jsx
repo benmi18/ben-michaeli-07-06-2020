@@ -2,8 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 // Material
 import { Card, CardContent } from '@material-ui/core';
-// Services
-import { temperatureConverter } from '../../helpers';
 // Style
 import './index.css';
 import WeatherIcon from '../weather-icon';

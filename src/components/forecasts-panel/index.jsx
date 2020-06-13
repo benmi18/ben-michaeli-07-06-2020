@@ -12,11 +12,12 @@ import { toggleFavoriteAction } from '../../store/actions';
 import WeatherCard from '../weather-card';
 import WeatherIcon from "../weather-icon";
 import Loader from '../loader';
-// Services
-import * as moment from 'moment';
-import * as weatherService from "../../services/weather-service/weatherService";
 import Temperature from '../temperature';
 import Message from '../message';
+// Services
+import * as moment from 'moment';
+import * as weatherService from "../../services/weather-service";
+import { forecastsError } from '../../helpers';
 
 const ForecastsPanel = () => {
   // State
@@ -40,7 +41,7 @@ const ForecastsPanel = () => {
   const fetchCurrentCityConditions = async () => {
     const res = await weatherService.forecasts(selectedCity.Key);
     if (res.name && res.name === 'Error') {
-      setError(res.message);
+      setError(forecastsError);
     } else {
       const todayForecast = res.data.DailyForecasts[0];
       setForecasts({

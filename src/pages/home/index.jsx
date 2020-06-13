@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // Style
 import './index.css';
 // Store
 import { useSelector, useDispatch } from 'react-redux';
 import { setSelectedCityAction } from '../../store/actions';
 // Services
-import * as weatherService from "../../services/weather-service/weatherService";
+import * as weatherService from "../../services/weather-service";
+import * as geolocationService from "../../services/geolocation-service";
+import { geolocationError, autocompleteError, geolocationBlockedError } from '../../helpers';
 // Components
 import SearchInput from '../../components/search-Input';
 import ForecastsPanel from '../../components/forecasts-panel';
@@ -17,6 +19,27 @@ const Home = () => {
   const selectedCity = useSelector(state => state.selectedCity);
   const [error, setError] = useState(false);
 
+  useEffect(() => {
+    geolocationService.getGeoLocation(successGeolocation, errorGeolocation);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const successGeolocation = async ({coords: {latitude, longitude}}) => {
+    if (!selectedCity.redirectFromFavorite) {
+      const res = await weatherService.geolocation(latitude, longitude);
+      if (res.name && res.name === 'Error') {
+        debugger
+        setError(geolocationError);
+        return;
+      }
+      dispatch(setSelectedCityAction(res.data));
+    }
+  }
+
+  const errorGeolocation = async (error) => {
+    setError(geolocationBlockedError);
+  }
+
   const handleSearch = async event => {
     const enterKey = 'Enter';
     if (event.key !== enterKey) {
@@ -25,7 +48,7 @@ const Home = () => {
       const query = `${inputValue}${pressedKey}`;
       const res = await weatherService.autocomplete(query);
       if (res.name && res.name === 'Error') {
-        setError(res.message);
+        setError(autocompleteError);
         return;
       }
       setAutoCompleteOptions(res.data);
