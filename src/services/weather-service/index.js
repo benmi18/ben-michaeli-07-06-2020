@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://dataservice.accuweather.com';
+const BASE_URL = 'https://dataservice.accuweather.com';
 const LOCATION_URL = 'locations/v1/cities';
 const CURRENT_CONDITION_URL = 'currentconditions/v1';
 const FORECASTS_URL = 'forecasts/v1/daily/5day';
