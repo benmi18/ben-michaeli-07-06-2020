@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "84e70275ae73891eb9b297960d8a692e",
+    "revision": "d4efba62577f9aefe215e885714208ce",
     "url": "/ben-michaeli-07-06-2020/index.html"
   },
   {
-    "revision": "99953ec4575565153b94",
-    "url": "/ben-michaeli-07-06-2020/static/css/main.316d7ad7.chunk.css"
+    "revision": "91faf15b5e07eff0c205",
+    "url": "/ben-michaeli-07-06-2020/static/css/main.5811ec0e.chunk.css"
   },
   {
-    "revision": "f24eed2d0e8fc398b34e",
-    "url": "/ben-michaeli-07-06-2020/static/js/2.4294d164.chunk.js"
+    "revision": "d2e7409eeb1926b789c5",
+    "url": "/ben-michaeli-07-06-2020/static/js/2.db19a347.chunk.js"
   },
   {
     "revision": "89b0379e7bcda1a468d8b0343aeb4e53",
-    "url": "/ben-michaeli-07-06-2020/static/js/2.4294d164.chunk.js.LICENSE.txt"
+    "url": "/ben-michaeli-07-06-2020/static/js/2.db19a347.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "99953ec4575565153b94",
-    "url": "/ben-michaeli-07-06-2020/static/js/main.ffda3156.chunk.js"
+    "revision": "91faf15b5e07eff0c205",
+    "url": "/ben-michaeli-07-06-2020/static/js/main.80f1c64d.chunk.js"
   },
   {
     "revision": "3cdc39c205367d46d661",
