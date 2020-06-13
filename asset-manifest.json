@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.316d7ad7.chunk.css",
-    "main.js": "/static/js/main.a76db92c.chunk.js",
-    "main.js.map": "/static/js/main.a76db92c.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.a86148e1.js",
-    "runtime-main.js.map": "/static/js/runtime-main.a86148e1.js.map",
-    "static/js/2.4294d164.chunk.js": "/static/js/2.4294d164.chunk.js",
-    "static/js/2.4294d164.chunk.js.map": "/static/js/2.4294d164.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.66b67d80df8e899344ad113e9e45ddf5.js": "/precache-manifest.66b67d80df8e899344ad113e9e45ddf5.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.316d7ad7.chunk.css.map": "/static/css/main.316d7ad7.chunk.css.map",
-    "static/js/2.4294d164.chunk.js.LICENSE.txt": "/static/js/2.4294d164.chunk.js.LICENSE.txt",
-    "static/media/15.png": "/static/media/15.39ac499c.png",
-    "static/media/16.png": "/static/media/16.0cf9cad1.png",
-    "static/media/17.png": "/static/media/17.3c85da3e.png",
-    "static/media/41.png": "/static/media/41.421c13f1.png"
+    "main.css": "/ben-michaeli-07-06-2020/static/css/main.316d7ad7.chunk.css",
+    "main.js": "/ben-michaeli-07-06-2020/static/js/main.c0d0a7eb.chunk.js",
+    "main.js.map": "/ben-michaeli-07-06-2020/static/js/main.c0d0a7eb.chunk.js.map",
+    "runtime-main.js": "/ben-michaeli-07-06-2020/static/js/runtime-main.2dcb056a.js",
+    "runtime-main.js.map": "/ben-michaeli-07-06-2020/static/js/runtime-main.2dcb056a.js.map",
+    "static/js/2.4294d164.chunk.js": "/ben-michaeli-07-06-2020/static/js/2.4294d164.chunk.js",
+    "static/js/2.4294d164.chunk.js.map": "/ben-michaeli-07-06-2020/static/js/2.4294d164.chunk.js.map",
+    "index.html": "/ben-michaeli-07-06-2020/index.html",
+    "precache-manifest.a2ece69ab306a530b9df3ca9800b41dc.js": "/ben-michaeli-07-06-2020/precache-manifest.a2ece69ab306a530b9df3ca9800b41dc.js",
+    "service-worker.js": "/ben-michaeli-07-06-2020/service-worker.js",
+    "static/css/main.316d7ad7.chunk.css.map": "/ben-michaeli-07-06-2020/static/css/main.316d7ad7.chunk.css.map",
+    "static/js/2.4294d164.chunk.js.LICENSE.txt": "/ben-michaeli-07-06-2020/static/js/2.4294d164.chunk.js.LICENSE.txt",
+    "static/media/15.png": "/ben-michaeli-07-06-2020/static/media/15.39ac499c.png",
+    "static/media/16.png": "/ben-michaeli-07-06-2020/static/media/16.0cf9cad1.png",
+    "static/media/17.png": "/ben-michaeli-07-06-2020/static/media/17.3c85da3e.png",
+    "static/media/41.png": "/ben-michaeli-07-06-2020/static/media/41.421c13f1.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.a86148e1.js",
+    "static/js/runtime-main.2dcb056a.js",
     "static/js/2.4294d164.chunk.js",
     "static/css/main.316d7ad7.chunk.css",
-    "static/js/main.a76db92c.chunk.js"
+    "static/js/main.c0d0a7eb.chunk.js"
   ]
 }
