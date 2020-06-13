@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import MuiAlert from '@material-ui/lab/Alert';
 import './index.css';
 import { Snackbar } from '@material-ui/core';
@@ -7,9 +7,14 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const Message = ({ text, type, autoHideDuration }) => {
-  const [open, setOpen] = useState(true);
+const Message = ({ text, type, autoHideDuration, isOpen, handleOnClose }) => {
+  const [open, setOpen] = useState(isOpen);
+  useEffect(() => {
+    setOpen(isOpen);
+  }, [isOpen]);
+
   const handleClose = (event, reason) => {
+    handleOnClose();
     if (reason === 'clickaway') {
       return;
     }

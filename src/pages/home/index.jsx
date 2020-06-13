@@ -17,19 +17,18 @@ const Home = () => {
   const dispatch = useDispatch();
   const [autoCompleteOptions, setAutoCompleteOptions] = useState([]);
   const selectedCity = useSelector(state => state.selectedCity);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({ isError: false, message: '' });
 
   useEffect(() => {
     geolocationService.getGeoLocation(successGeolocation, errorGeolocation);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const successGeolocation = async ({coords: {latitude, longitude}}) => {
+  const successGeolocation = async ({ coords: { latitude, longitude } }) => {
     if (!selectedCity.redirectFromFavorite) {
       const res = await weatherService.geolocation(latitude, longitude);
       if (res.name && res.name === 'Error') {
-        debugger
-        setError(geolocationError);
+        setError({ isError: true, message: geolocationError });
         return;
       }
       dispatch(setSelectedCityAction(res.data));
@@ -48,7 +47,7 @@ const Home = () => {
       const query = `${inputValue}${pressedKey}`;
       const res = await weatherService.autocomplete(query);
       if (res.name && res.name === 'Error') {
-        setError(autocompleteError);
+        setError({ isError: true, message: autocompleteError });
         return;
       }
       setAutoCompleteOptions(res.data);
@@ -70,7 +69,16 @@ const Home = () => {
         onSearch={handleSearch}
         onInputChanged={handleInputChange}
       />
-      {error && <Message className="error-message" autoHideDuration={2500} type="error" text={error} />}
+      {error.isError &&
+        <Message
+          isOpen={error.isError}
+          handleOnClose={() => setError({ isError: false, message: '' })}
+          className="error-message"
+          autoHideDuration={2500}
+          type="error"
+          text={error.message}
+        />
+      }
       <ForecastsPanel />
     </div>
   )
